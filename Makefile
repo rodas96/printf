@@ -6,24 +6,28 @@
 #    By: rmorais <rmorais@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 18:11:46 by rmorais           #+#    #+#              #
-#    Updated: 2022/11/14 21:38:16 by rmorais          ###   ########.fr        #
+#    Updated: 2022/11/16 17:08:33 by rmorais          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ftprintf.a
+NAME = libftprintf.a
 
-SRC = ft_printf 
+SRCS = ft_printchar.c ft_printnbrbase.c ft_printstr.c\
+
+OBJS =	$(SRCS:.c=.o)
+
 CC = gcc
 RM = rm -f
-AR = ar rcs
 
-ALL: $(NAME)
-$(NAME) : $(SRC:=)
-	@$(AR) $(NAME) $(SRC:=.o)
-clean: 
-	@$(RM)	$(SRC:=.o)
-fclean: clean
-	@$(RM) -f $(NAME)
-re: fclean all
+all: $(NAME)
 
-.PHONY:		all clean fclean re
+$(NAME): $(SRCS:.c=.o)
+				@ar rcs $(NAME) $(SRCS:.c=.o)
+
+clean:
+				$(RM) $(OBJS)
+
+fclean:			clean
+				$(RM) $(NAME)
+
+re:				fclean $(NAME)
