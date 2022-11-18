@@ -6,11 +6,11 @@
 /*   By: rmorais <rmorais@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 21:13:30 by rmorais           #+#    #+#             */
-/*   Updated: 2022/11/16 17:04:24 by rmorais          ###   ########.fr       */
+/*   Updated: 2022/11/18 17:53:39 by rmorais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printstr(const char *s)
 {
