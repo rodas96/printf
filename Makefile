@@ -6,24 +6,25 @@
 #    By: rmorais <rmorais@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 18:11:46 by rmorais           #+#    #+#              #
-#    Updated: 2022/11/18 22:07:55 by rmorais          ###   ########.fr        #
+#    Updated: 2022/11/29 15:12:12 by rmorais          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_printchar.c ft_printnbrbase.c ft_printstr.c ft_printf.c ft_strlen.c\
+SRCS = ft_printchar ft_printnbrbase ft_printstr ft_printf ft_strlen \
 
-OBJS =	$(SRCS:.c=.o)
+OBJS =	$(SRCS:=.o)
 
 CC = gcc
 RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(SRCS:.c=.o)
-				@ar rcs $(NAME) $(SRCS:.c=.o)
-
+$(NAME): $(SRCS:=.o)
+				@ar rcs $(NAME) $(SRCS:=.o)
+bonus:	$(SRCS:=.o)	
+				@ar rcs $(NAME) $(SRCS:=.o)
 clean:
 				$(RM) $(OBJS)
 

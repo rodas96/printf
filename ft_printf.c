@@ -6,13 +6,13 @@
 /*   By: rmorais <rmorais@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 19:31:07 by rmorais           #+#    #+#             */
-/*   Updated: 2022/11/18 22:16:57 by rmorais          ###   ########.fr       */
+/*   Updated: 2022/11/29 14:56:21 by rmorais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_variables(char variable, va_list arg)
+int	ft_variables(char variable, va_list arg, int plus)
 {
 	if (variable == 'c')
 		return (ft_printchar(va_arg(arg, int)));
@@ -21,9 +21,9 @@ int	ft_variables(char variable, va_list arg)
 	else if (variable == 'p')
 		return (ft_printnbrbase((va_arg(arg, unsigned long)), HEXAL, 0, 'p'));
 	else if (variable == 'd' || variable == 'i')
-		return (ft_printnbr(va_arg(arg, int)));
+		return (ft_printnbr(va_arg(arg, int), plus));
 	else if (variable == 'u')
-		return (ft_printnbr(va_arg(arg, unsigned int)));
+		return (ft_printnbrbase(va_arg(arg, unsigned int), DEC, 0, 'u'));
 	else if (variable == 'x')
 		return (ft_printnbrbase(va_arg(arg, unsigned int), HEXAL, 0, 'x'));
 	else if (variable == 'X')
@@ -37,6 +37,7 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	arg;
 	int		count;
+	int		plus;
 
 	count = 0;
 	va_start(arg, s);
@@ -44,14 +45,17 @@ int	ft_printf(const char *s, ...)
 	{
 		if (*s == '%')
 		{
-			count += ft_variables(*++s, arg);
+			plus = 0;
+			if (*++s == '+')
+			{
+				plus = 1;
+				s++;
+			}
+			count += ft_variables(*s, arg, plus);
 			s++;
 		}
 		else
-		{
-			count += ft_printchar(*s);
-			s++;
-		}
+			count += ft_printchar(*s++);
 	}
 	va_end(arg);
 	return (count);

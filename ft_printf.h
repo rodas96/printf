@@ -6,7 +6,7 @@
 /*   By: rmorais <rmorais@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:13:57 by rmorais           #+#    #+#             */
-/*   Updated: 2022/11/18 22:16:50 by rmorais          ###   ########.fr       */
+/*   Updated: 2022/11/19 20:00:09 by rmorais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	ft_printchar(int c);
 int	ft_printstr(const char *s);
 int	ft_strlen(char *str);
 int	ft_printnbrbase(unsigned long n, char *base, int lol, char c);
-int	ft_printnbr(long long n);
-int	ft_variables(char variable, va_list args);
+int	ft_printnbr(long long n, int plus);
+int	ft_variables(char variable, va_list args, int plus);
 int	ft_printf(const char *s, ...);
 
 #endif
